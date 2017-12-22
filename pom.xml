@@ -95,8 +95,7 @@
 				<configuration>
 					<indentSize>4</indentSize>
 					<allowSnapshots>true</allowSnapshots>
-					<pushRemote>true</pushRemote>
-					<skipTestProject>true</skipTestProject>					
+					<pushRemote>true</pushRemote>		
 				</configuration>
 			</plugin>
 			<plugin>
