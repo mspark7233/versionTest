@@ -9,7 +9,7 @@
 
 	<groupId>ms.project</groupId>
 	<artifactId>ms-parent</artifactId>
-	<version>0.0.5</version>
+	<version>0.0.6</version>
 	<packaging>pom</packaging>
 	<description>ms maven 부모 프로젝트 </description>
 
