@@ -9,7 +9,7 @@
 
 	<groupId>ms.project</groupId>
 	<artifactId>ms-parent</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<packaging>pom</packaging>
 	<description>ms maven 부모 프로젝트 </description>
 
@@ -95,8 +95,7 @@
 				<configuration>
 					<indentSize>4</indentSize>
 					<allowSnapshots>true</allowSnapshots>
-					<pushRemote>true</pushRemote>
-					<skipTestProject>true</skipTestProject>					
+					<pushRemote>true</pushRemote>		
 				</configuration>
 			</plugin>
 			<plugin>
