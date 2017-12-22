@@ -10,7 +10,7 @@
 
 	<modules>
 		<module>ms-core</module>
-		<module>ms-model</module>
+		<!-- <module>ms-model</module> -->
 	</modules>
 	
 	<scm>

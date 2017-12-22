@@ -9,5 +9,6 @@
 	
 	<artifactId>ms-core</artifactId>
 	<description>ms core 프로젝트</description>
+	<version>0.0.2-SNAPSHOT</version>
 	
 </project>
