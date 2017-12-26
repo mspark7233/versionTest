@@ -3,7 +3,7 @@
 
 	<groupId>ms.project</groupId>
 	<artifactId>ms-parent</artifactId>
-	<version>1.0.22</version>
+	<version>1.0.23</version>
 	<packaging>pom</packaging>
 	<description>ms maven 부모 프로젝트 </description>
 
@@ -72,7 +72,72 @@
 		<url>https://build.cjoshopping.com</url>
 	</ciManagement>
 
-	<!-- hotfix merge -->
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>exec-maven-plugin</artifactId>
+							<version>1.6.0</version>
+							<executions>
+								<execution>
+									<id>works-noti</id>
+									<goals>
+										<goal>exec</goal>
+									</goals>
+									<phase>deploy</phase>
+									<configuration>
+										<executable>curl</executable>
+										<arguments>
+											<argument>-H</argument>
+											<argument>Content-Type: application/json</argument>
+											<argument>-X</argument>
+											<argument>POST</argument>
+											<arguement>-d</arguement>
+											<arguement><![CDATA[{"issue":{"project_id":"manage_version","subject":"DEPLOYED - ${project.artifactId}-${project.version}","priority_id":"4","assigned_to_id":"604","description":"GROUP ID : ${project.groupId}<br />ARTIFACT ID : ${project.artifactId}<br />VERSION : ${project.version}<p>MESSAGE : <br />${message}</p>"}}]]></arguement>
+											<arguement>-u</arguement>
+											<argument>versionmanager:versionmanager</argument>
+											<argument>https://works.cjmall.com/issues.json</argument>
+										</arguments>
+									</configuration>
+								</execution>
+								<execution>
+									<id>slack-noti</id>
+									<goals>
+										<goal>exec</goal>
+									</goals>
+									<phase>deploy</phase>
+									<configuration>
+										<executable>curl</executable>
+										<arguments>
+											<argument>-X</argument>
+											<argument>POST</argument>
+											<arguement>--data-urlencode</arguement>
+											<arguement><![CDATA[payload={"channel":"#0_version","username":"VERSION MANANGER","attachments":[{"text":"The library has been deployed.","color":"#D00000","fields":[{"title":"GROUP ID","value":"${project.groupId}"},{"title":"ARTIFACT ID","value":"${project.artifactId}"},{"title":"VERSION","value":"${project.version}"}, {"title":"Message","value":"${message}"}]}],"icon_emoji":":relieved:"}]]></arguement>
+											<argument>https://slackhook.cjmall.com/services/T035QCENL/B8KB7SE1K/CUNv74oElZyuHmjHzNu1kPAV</argument>
+										</arguments>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+						<plugin>
+							<groupId>io.ultreia.java4all.jgitflow</groupId>
+							<artifactId>jgitflow-maven-plugin</artifactId>
+							<version>1.0.0-rc-1</version>
+							<configuration>
+								<allowSnapshots>true</allowSnapshots>
+								<pushReleases>true</pushReleases>
+								<pushHotfixes>true</pushHotfixes>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
 
 	<build>
 		<extensions>
@@ -82,65 +147,8 @@
 				<version>2.9</version>
 			</extension>
 		</extensions>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.6.0</version>
-				<executions>
-					<execution>
-						<id>works-noti</id>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<phase>deploy</phase>
-						<configuration>
-							<executable>curl</executable>
-							<arguments>
-								<argument>-H</argument>
-								<argument>Content-Type: application/json</argument>
-								<argument>-X</argument>
-								<argument>POST</argument>
-								<arguement>-d</arguement>
-								<arguement><![CDATA[{"issue":{"project_id":"manage_version","subject":"DEPLOYED - ${project.artifactId}-${project.version}","priority_id":"4","assigned_to_id":"604","description":"GROUP ID : ${project.groupId}<br />ARTIFACT ID : ${project.artifactId}<br />VERSION : ${project.version}<p>MESSAGE : <br />${message}</p>"}}]]></arguement>
-								<arguement>-u</arguement>
-								<argument>versionmanager:versionmanager</argument>
-								<argument>https://works.cjmall.com/issues.json</argument>
-							</arguments>
-						</configuration>
-					</execution>
-					<execution>
-						<id>slack-noti</id>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<phase>deploy</phase>
-						<configuration>
-							<executable>curl</executable>
-							<arguments>								
-								<argument>-X</argument>
-								<argument>POST</argument>
-								<arguement>--data-urlencode</arguement>
-								<arguement><![CDATA[payload={"channel":"#0_version","username":"VERSION MANANGER","attachments":[{"text":"The library has been deployed.","color":"#D00000","fields":[{"title":"GROUP ID","value":"${project.groupId}"},{"title":"ARTIFACT ID","value":"${project.artifactId}"},{"title":"VERSION","value":"${project.version}"}, {"title":"Message","value":"${message}"}]}],"icon_emoji":":relieved:"}]]></arguement>								
-								<argument>https://slackhook.cjmall.com/services/T035QCENL/B8KB7SE1K/CUNv74oElZyuHmjHzNu1kPAV</argument>
-							</arguments>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<groupId>io.ultreia.java4all.jgitflow</groupId>
-					<artifactId>jgitflow-maven-plugin</artifactId>
-					<version>1.0.0-rc-1</version>
-					<configuration>
-						<allowSnapshots>true</allowSnapshots>
-						<pushReleases>true</pushReleases>
-						<pushHotfixes>true</pushHotfixes>
-					</configuration>
-				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
