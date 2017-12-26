@@ -4,9 +4,11 @@
 	<parent>
 		<groupId>ms.project</groupId>
 		<artifactId>ms-parent</artifactId>
-		<version>1.0.2</version>
+		<version>1.0.2-h3</version>
 	</parent>
 	
+	
+	<!-- hotfix -->
 	<artifactId>ms-model</artifactId>
 	<description>ms model 프로젝트</description>
 	
