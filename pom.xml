@@ -82,6 +82,33 @@
 				<version>2.9</version>
 			</extension>
 		</extensions>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2</version>
+				<executions>
+					<execution>
+						<id>slack version noti</id>
+						<goals>
+							<goal>release-finish</goal>
+							<goal>hotfix-finish</goal>
+						</goals>
+						<configuration>
+							<executable>curl</executable>
+							<arguments>
+								<argument>-X</argument>
+								<argument>POST</argument>
+								<arguement>--data-urlencode</arguement>
+								<arguement>"payload={\"channel\": \"#0_version\", \"username\": \"webhookbot\", \"text\": \"This is posted to #0_version and comes from a bot named webhookbot.\", \"icon_emoji\": \":ghost:\"}"</arguement>
+								<argument>https://slackhook.cjmall.com/services/T035QCENL/B8KB7SE1K/CUNv74oElZyuHmjHzNu1kPAV</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+				
+			</plugin>
+		</plugins>
 		<pluginManagement>
 			<plugins>
 				<plugin>
