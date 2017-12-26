@@ -3,7 +3,7 @@
 
 	<groupId>ms.project</groupId>
 	<artifactId>ms-parent</artifactId>
-	<version>1.0.9</version>
+	<version>1.0.10</version>
 	<packaging>pom</packaging>
 	<description>ms maven 부모 프로젝트 </description>
 
@@ -85,26 +85,6 @@
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.0.0</version>
-				<executions>
-					<execution>
-						<id>regex-property</id>
-						<goals>
-							<goal>regex-property</goal>
-						</goals>
-						<configuration>
-							<name>release.version</name>
-							<value>${project.version}</value>
-							<regex>-SNAPSHOT</regex>
-							<replacement />
-							<failIfNoMatch>false</failIfNoMatch>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.6.0</version>
 				<executions>
@@ -113,6 +93,7 @@
 						<goals>
 							<goal>exec</goal>
 						</goals>
+						<phase>deploy</phase>
 						<configuration>
 							<executable>curl</executable>
 							<arguments>
@@ -120,7 +101,7 @@
 								<argument>POST</argument>
 								<arguement>--data-urlencode</arguement>
 								<arguement>payload={"channel": "#0_version", "username":
-									"VERSION MANANGER", "text": "DEPLOY - ${project.artifactId}	${release.version}", "icon_emoji": ":relieved:"}</arguement>
+									"VERSION MANANGER", "text": "DEPLOY - ${project.artifactId}	${project.version}", "icon_emoji": ":relieved:"}</arguement>
 								<argument>https://slackhook.cjmall.com/services/T035QCENL/B8KB7SE1K/CUNv74oElZyuHmjHzNu1kPAV</argument>
 							</arguments>
 						</configuration>
