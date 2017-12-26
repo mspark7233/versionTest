@@ -7,6 +7,8 @@
 		<version>1.0.2-h3</version>
 	</parent>
 	
+	
+	<!-- hotfix -->
 	<artifactId>ms-model</artifactId>
 	<description>ms model 프로젝트</description>
 	
