@@ -100,30 +100,7 @@
 								<argument>-X</argument>
 								<argument>POST</argument>
 								<arguement>--data-urlencode</arguement>
-								<arguement>
-									payload={
-										"channel": "#0_version", 
-										"username": "VERSION MANANGER", 
-										"attachments": [ 
-											"text" : "DEPLOY", 
-											"fields" : [ 
-												{
-													"title" : "GROUP ID",  
-													"value": "${project.groupId}"
-												},
-												{
-													"title" : "ARTIFACT ID",  
-													"value": "${project.artifactId}"
-												},
-												{
-													"title" : "VERSION",  
-													"value": "${project.version}"
-												}
-											]
-										],
-										"icon_emoji": ":relieved:"
-									}
-								</arguement>
+								<arguement>payload={"channel":"#0_version","username":"VERSION MANANGER","attachments":[{"text":"The library has been deployed.","color":"#D00000","fields":[{"title":"GROUP ID","value":"${project.groupId}"},{"title":"ARTIFACT ID","value":"${project.artifactId}"},{"title":"VERSION","value":"${project.version}"}]}],"icon_emoji":":relieved:"}</arguement>
 								<argument>https://slackhook.cjmall.com/services/T035QCENL/B8KB7SE1K/CUNv74oElZyuHmjHzNu1kPAV</argument>
 							</arguments>
 						</configuration>
