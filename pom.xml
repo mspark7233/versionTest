@@ -97,10 +97,12 @@
 						<configuration>
 							<executable>curl</executable>
 							<arguments>
+								<argument>-H</argument>
+								<argument>Content-Type: application/json</argument>
 								<argument>-X</argument>
 								<argument>POST</argument>
-								<arguement>--data-urlencode</arguement>
-								<arguement>payload={"channel":"#0_version","username":"VERSION MANANGER","attachments":[{"text":"The library has been deployed.","color":"#D00000","fields":[{"title":"GROUP ID","value":"${project.groupId}"},{"title":"ARTIFACT ID","value":"${project.artifactId}"},{"title":"VERSION","value":"${project.version}"}]}],"icon_emoji":":relieved:"}</arguement>
+								<arguement>-d</arguement>
+								<arguement>{"issue":{"project_id":"manage_version","subject":"redmine restapi test","priority_id":"4","assigned_to_id":"604","description":"GROUP ID : ${project.groupId}<br />ARTIFACT ID : ${project.artifactId}<br />VERSION : ${project.version}"}}</arguement>
 								<arguement>-u</arguement>
 								<argument>versionmanager:versionmanager</argument>
 								<argument>https://works.cjmall.com/issues.json</argument>
@@ -115,13 +117,11 @@
 						<phase>deploy</phase>
 						<configuration>
 							<executable>curl</executable>
-							<arguments>
-								<argument>-H</argument>
-								<argument>Content-Type: application/json</argument>
+							<arguments>								
 								<argument>-X</argument>
 								<argument>POST</argument>
 								<arguement>--data-urlencode</arguement>
-								<arguement>{"issue": {"project_id": "manage_version", "subject":"RELEASE NOTICE - ${project.artifactId}-${project.version}", "priority_id":"3", "assigned_to_id": "604", "description":"GROUP ID : ${project.groupId}\nARTIFACT ID : ${project.artifactId}\nVERSION : ${project.version}"}}</arguement>
+								<arguement>payload={"channel":"#0_version","username":"VERSION MANANGER","attachments":[{"text":"The library has been deployed.","color":"#D00000","fields":[{"title":"GROUP ID","value":"${project.groupId}"},{"title":"ARTIFACT ID","value":"${project.artifactId}"},{"title":"VERSION","value":"${project.version}"}]}],"icon_emoji":":relieved:"}</arguement>								
 								<argument>https://slackhook.cjmall.com/services/T035QCENL/B8KB7SE1K/CUNv74oElZyuHmjHzNu1kPAV</argument>
 							</arguments>
 						</configuration>
