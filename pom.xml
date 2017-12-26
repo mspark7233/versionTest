@@ -3,7 +3,7 @@
 
 	<groupId>ms.project</groupId>
 	<artifactId>ms-parent</artifactId>
-	<version>1.0.10</version>
+	<version>1.0.11</version>
 	<packaging>pom</packaging>
 	<description>ms maven 부모 프로젝트 </description>
 
@@ -100,8 +100,7 @@
 								<argument>-X</argument>
 								<argument>POST</argument>
 								<arguement>--data-urlencode</arguement>
-								<arguement>payload={"channel": "#0_version", "username":
-									"VERSION MANANGER", "text": "DEPLOY - ${project.artifactId}	${project.version}", "icon_emoji": ":relieved:"}</arguement>
+								<arguement>payload={"channel": "#0_version", "username": "VERSION MANANGER", "color":"#D00000", "text": "PROJECT GROUP ID : ${project.groupId}\n ARTIFACT ID:${project.artifactId}\n VERSION:${project.version}", "icon_emoji": ":relieved:"}</arguement>
 								<argument>https://slackhook.cjmall.com/services/T035QCENL/B8KB7SE1K/CUNv74oElZyuHmjHzNu1kPAV</argument>
 							</arguments>
 						</configuration>
