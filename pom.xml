@@ -89,7 +89,7 @@
 				<version>1.6.0</version>
 				<executions>
 					<execution>
-						<id>default-cli</id>
+						<id>works-noti</id>
 						<goals>
 							<goal>exec</goal>
 						</goals>
@@ -106,7 +106,7 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>default-cli</id>
+						<id>slack-noti</id>
 						<goals>
 							<goal>exec</goal>
 						</goals>
