@@ -4,11 +4,9 @@
 	<parent>
 		<groupId>ms.project</groupId>
 		<artifactId>ms-parent</artifactId>
-		<version>0.0.10-SNAPSHOT</version>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
 	<artifactId>ms-core</artifactId>
-	<description>ms core 프로젝트</description>
-	<version>0.1.1-SNAPSHOT</version>
-	
+	<description>ms core 프로젝트</description>	
 </project>
