@@ -4,9 +4,26 @@
 	<parent>
 		<groupId>ms.project</groupId>
 		<artifactId>ms-parent</artifactId>
-		<version>1.0.2-h3</version>
+		<version>1.0.3</version>
 	</parent>
 	
 	<artifactId>ms-core</artifactId>
 	<description>ms core 프로젝트</description>	
+		
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>io.ultreia.java4all.jgitflow</groupId>
+				<artifactId>jgitflow-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>
