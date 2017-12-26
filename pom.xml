@@ -3,7 +3,7 @@
 	
 	<groupId>ms.project</groupId>
 	<artifactId>ms-parent</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<packaging>pom</packaging>
 	<description>ms maven 부모 프로젝트 </description>
 
@@ -88,6 +88,7 @@
     			<version>1.0.0-rc-1</version>
     			<configuration>
     				<allowSnapshots>true</allowSnapshots>
+    				<pushReleases>true</pushReleases>
     				<pushHotfixes>true</pushHotfixes>
     			</configuration>
     		</plugin>
