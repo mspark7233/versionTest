@@ -102,7 +102,7 @@
 								<argument>-X</argument>
 								<argument>POST</argument>
 								<arguement>-d</arguement>
-								<arguement><![CDATA[{"issue":{"project_id":"manage_version","subject":"${project.artifactId}-${project.version}","priority_id":"4","assigned_to_id":"604","description":"GROUP ID : ${project.groupId}<br />ARTIFACT ID : ${project.artifactId}<br />VERSION : ${project.version}<p>MESSAGE : <br/>${message}</p>"}}]]></arguement>
+								<arguement><![CDATA[{"issue":{"project_id":"manage_version","subject":"${project.artifactId}-${project.version}","priority_id":"4","assigned_to_id":"604","description":"GROUP ID : ${project.groupId}<br />ARTIFACT ID : ${project.artifactId}<br />VERSION : ${project.version}<p>MESSAGE : <br />${message}</p>"}}]]></arguement>
 								<arguement>-u</arguement>
 								<argument>versionmanager:versionmanager</argument>
 								<argument>https://works.cjmall.com/issues.json</argument>
