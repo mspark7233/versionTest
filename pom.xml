@@ -1,6 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<groupId>ms.project</groupId>
 	<artifactId>ms-parent</artifactId>
 	<version>1.0.8-SNAPSHOT</version>
@@ -11,7 +12,7 @@
 		<module>ms-core</module>
 		<module>ms-model</module>
 	</modules>
-	
+
 	<scm>
 		<url>scm:git:https://github.com/mspark7233/versionTest.git</url>
 		<connection>scm:git:https://github.com/mspark7233/versionTest.git</connection>
@@ -73,7 +74,7 @@
 	</ciManagement>
 
 	<!-- hotfix merge -->
-	
+
 	<build>
 		<extensions>
 			<extension>
@@ -83,6 +84,26 @@
 			</extension>
 		</extensions>
 		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>regex-property</id>
+						<goals>
+							<goal>regex-property</goal>
+						</goals>
+						<configuration>
+							<name>release.version</name>
+							<value>${project.version}</value>
+							<regex>-SNAPSHOT</regex>
+							<replacement></replacement>
+							<failIfNoMatch>false</failIfNoMatch>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -99,26 +120,27 @@
 								<argument>-X</argument>
 								<argument>POST</argument>
 								<arguement>--data-urlencode</arguement>
-								<arguement>payload={"channel": "#0_version", "username": "VERSION MANANGER", "text": "DEPLOY - ${project.artifactId} ${project.version}", "icon_emoji": ":relieved:"}</arguement>
+								<arguement>payload={"channel": "#0_version", "username":
+									"VERSION MANANGER", "text": "DEPLOY - ${project.artifactId}	${release.version}", "icon_emoji": ":relieved:"}</arguement>
 								<argument>https://slackhook.cjmall.com/services/T035QCENL/B8KB7SE1K/CUNv74oElZyuHmjHzNu1kPAV</argument>
 							</arguments>
 						</configuration>
 					</execution>
-				</executions>				
+				</executions>
 			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
 				<plugin>
-	    			<groupId>io.ultreia.java4all.jgitflow</groupId>
-	    			<artifactId>jgitflow-maven-plugin</artifactId>
-	    			<version>1.0.0-rc-1</version>
-	    			<configuration>
-	    				<allowSnapshots>true</allowSnapshots>
-	    				<pushReleases>true</pushReleases>
-	    				<pushHotfixes>true</pushHotfixes>
-	    			</configuration>
-	    		</plugin>
+					<groupId>io.ultreia.java4all.jgitflow</groupId>
+					<artifactId>jgitflow-maven-plugin</artifactId>
+					<version>1.0.0-rc-1</version>
+					<configuration>
+						<allowSnapshots>true</allowSnapshots>
+						<pushReleases>true</pushReleases>
+						<pushHotfixes>true</pushHotfixes>
+					</configuration>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
