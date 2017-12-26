@@ -89,15 +89,14 @@
 		</extensions>
 		<plugins>
 			<plugin>
-				<groupId>com.amashchenko.maven.plugin</groupId>
-				<artifactId>gitflow-maven-plugin</artifactId>
-				<version>1.8.0</version>
-				<configuration>
-					<indentSize>4</indentSize>
-					<allowSnapshots>true</allowSnapshots>
-					<pushRemote>true</pushRemote>		
-				</configuration>
-			</plugin>
+    			<groupId>io.ultreia.java4all.jgitflow</groupId>
+    			<artifactId>jgitflow-maven-plugin</artifactId>
+    			<version>1.0.0-rc-1</version>
+    			<configuration>
+    				<allowSnapshots>true</allowSnapshots>
+    				<pushHotfixes>true</pushHotfixes>
+    			</configuration>
+    		</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
